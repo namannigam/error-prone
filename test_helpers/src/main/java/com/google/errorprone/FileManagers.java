@@ -70,6 +70,9 @@ public final class FileManagers {
     // classloaders observed with IntelliJ and maven.
     setLocation(fileManager, systemClassPath(), StandardLocation.CLASS_PATH);
 
+    // Set an explicit empty processorpath to discourage searching for processors on CLASS_PATH
+    setLocation(fileManager, ImmutableList.of(), StandardLocation.ANNOTATION_PROCESSOR_PATH);
+
     // Set the output directories (for compiled classes and generated sources) to an in-memory
     // temporary directory, to avoid successful compilations trying to write their output to
     // local disk wherever the test is executing.
